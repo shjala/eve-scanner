@@ -22,7 +22,4 @@ git -C aports/ tag | grep -E '^v[3-9]\.[0-9]+\.[0-9]+$' | sort -V | while read -
     else
         echo "Skipping $tag, file $filename already exists."
     fi
-
 done
-
-

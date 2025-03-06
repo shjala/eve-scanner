@@ -2,13 +2,16 @@ name: Run Python Script and Push Files
 
 on:
   schedule:
-    # Run the job every day at midnight
-    - cron: '0 0 * * *'
+    # Run the job every week at midnight (00:00 UTC) on Sunday
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout code
@@ -28,11 +31,10 @@ jobs:
     - name: Run Bash script
       run: ./build_package_info.sh
 
-    # Step 5: Commit and push the output files
     - name: Push output files
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
         git add output/*
-        git commit -m "Add output files from script"
+        git commit -m "Automated commit by GitHub Actions"
         git push origin HEAD:main
