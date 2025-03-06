@@ -155,7 +155,7 @@ def find_cve_patches(directory):
 
 def main(tag):
     """Main function to search for APKBUILD files, extract variables, and output to JSON."""
-    root_dir = "."
+    root_dir = "aports/"
     print(f"Searching for APKBUILD files in: {root_dir}")
     
     apkbuild_files = find_apkbuilds(root_dir)
